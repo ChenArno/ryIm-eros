@@ -5,7 +5,7 @@
 1、在你需要引入的项目中把你的项目clone到你podfile所在的目录。
 git clone https://github.com/ChenArno/ryIm-eros.git ryim
 ```Ruby
-    pod 'ryim', :git => "https://github.com/ChenArno/ryIm-eros.git", :tag => 0.0.3
+    pod 'ryim', :git => "https://github.com/ChenArno/ryIm-eros.git", :tag => '0.0.3'
 ```
 2、执行 pod update
 ```Ruby
