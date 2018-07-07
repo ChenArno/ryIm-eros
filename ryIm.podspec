@@ -9,12 +9,13 @@
 Pod::Spec.new do |s|
   s.name         = "ryIm"
   s.version      = "0.0.3"
-  s.summary      = "A short description of ryIm."
-  #s.description  = <<-DESC
-   #                DESC
+  s.summary      = "My ryIm."
+  s.description  = <<-DESC
+                        here is description.
+                       DESC
 
-  s.homepage     = "https://github.com/ChenArno/ryIm-eros.git"
-  s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  s.homepage     = "https://github.com/ChenArno/ryIm-eros"
+  s.license = "MIT"
   s.author             = { "ChenArno" => "517625126@qq.com" }
 
   s.platform     = :ios
