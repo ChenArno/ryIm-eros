@@ -8,7 +8,7 @@
 
 #import "VanzIm.h"
 #import <RongIMKit/RongIMKit.h>
-#import <WeexPluginLoader/WeexPluginLoader.h>
+#import <WeexPluginLoader/WeexPluginLoader/WeexPluginLoader.h>
 
 @interface VanzIm()
 

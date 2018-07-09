@@ -9,7 +9,7 @@
 #import "VanzImView.h"
 #import "VanzIm.h"
 #import <RongIMKit/RongIMKit.h>
-#import <WeexPluginLoader/WeexPluginLoader.h>
+#import <WeexPluginLoader/WeexPluginLoader/WeexPluginLoader.h>
 #import "chatViewController.h"
 
 @interface VanzImView()
