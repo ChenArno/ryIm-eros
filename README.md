@@ -7,7 +7,7 @@ git clone https://github.com/ChenArno/ryIm-eros.git ryim
 ```Ruby
     #pod 'RongCloudIM/IMLib', '~> 2.8.3'
     #pod 'RongCloudIM/IMKit', '~> 2.8.3'
-    pod 'ryim', :git => "https://github.com/ChenArno/ryIm-eros.git"
+    pod 'ryIm', :git => "https://github.com/ChenArno/ryIm-eros.git"
 ```
 2、执行 pod update
 ```Ruby
