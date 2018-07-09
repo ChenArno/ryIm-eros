@@ -12,7 +12,7 @@ git clone https://github.com/ChenArno/ryIm-eros.git ryim
  pod update
 ```
 
-3、z AppDelegate.m中加入\
+3、在AppDelegate.m中加入
 
 ```Ruby
   //头部引入架包文件
