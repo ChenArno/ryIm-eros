@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
 
   s.source_files  = "Source", "Source/*.{h,m}"
   #s.exclude_files = "Source/Exclude"
-   
+  s.requires_arc = true
   s.dependency 'RongCloudIM/IMLib', '~> 2.8.3'
   s.dependency 'RongCloudIM/IMKit', '~> 2.8.3'
 end

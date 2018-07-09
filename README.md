@@ -5,8 +5,6 @@
 1、在你需要引入的项目中把你的项目clone到你podfile所在的目录。
 git clone https://github.com/ChenArno/ryIm-eros.git ryim
 ```Ruby
-    #pod 'RongCloudIM/IMLib', '~> 2.8.3'
-    #pod 'RongCloudIM/IMKit', '~> 2.8.3'
     pod 'ryIm', :git => "https://github.com/ChenArno/ryIm-eros.git", :tag => '0.0.4'
 ```
 2、执行 pod update
@@ -17,6 +15,8 @@ git clone https://github.com/ChenArno/ryIm-eros.git ryim
 3、z AppDelegate.m中加入\
 
 ```Ruby
+  //头部引入架包文件
+  #import <RongIMKit/RongIMKit.h>
   //融云官网注册的appid:xxxx
     [[RCIM sharedRCIM] initWithAppKey:@"xxxx"];
 ```
