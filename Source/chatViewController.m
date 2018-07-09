@@ -32,7 +32,7 @@
 //    [leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 //     当收到的消息超过一个屏幕时，进入会话之后，是否在右上角提示上方存在的未读消息数
     self.enableUnreadMessageIcon = true;
-    UIImage *image = [UIImage imageNamed:@"leftBack"];
+    UIImage *image = [UIImage imageNamed:@"ryLeftBack"];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(2,8,9,16)];
     [imageView setImage:image];
     [leftBtn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];

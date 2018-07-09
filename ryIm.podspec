@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "ryIm"
-  s.version      = "0.0.5"
+  s.version      = "1.0.0"
   s.summary      = "My ryIm."
   s.description  = <<-DESC
                         here is description.
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   # s.osx.deployment_target = "10.7"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
-  s.source       = { :git => "https://github.com/ChenArno/ryIm-eros.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/ChenArno/ryIm-eros.git", :tag => s.version.to_s  }
 
   s.source_files  = "Source", "Source/*.{h,m}"
   #s.exclude_files = "Source/Exclude"
