@@ -39,9 +39,6 @@
     [leftBtn addSubview:imageView];
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = leftButton;
-    [RCIM sharedRCIM].userInfoDataSource = self;
-    
-//    
 }
 
 - (void) didReceiveMemoryWarning
@@ -56,6 +53,7 @@
     NSString *sentTime = [NSString stringWithFormat:@"%lld",time];
     [obj setObject:message forKey:@"content"];
     [obj setObject:sentTime forKey:@"sentTime"];
+    NSLog(@"send");
 //    [obj setObject:message.targetId forKey:@"targetId"];
     [_instance fireGlobalEvent:@"ryMsg.send" params:obj];
     [super didSendMessage:stauts content:message];

@@ -16,7 +16,9 @@
 @end
 
 NSString *myUserId;
-NSString *otherUuid;
+//NSString *otherUuid;
+RCUserInfo *mySelf;
+RCUserInfo *otherInfo;
 WX_PlUGIN_EXPORT_COMPONENT(vanz-im-view, VanzImView)
 @implementation VanzImView
 
@@ -28,17 +30,25 @@ WX_PlUGIN_EXPORT_COMPONENT(vanz-im-view, VanzImView)
         [RCIM sharedRCIM].receiveMessageDelegate = self; //接受消息监听
         //  设置头像为圆形
         [RCIM sharedRCIM].globalMessageAvatarStyle = RC_USER_AVATAR_CYCLE;
-        myUserId = [[VanzIm alloc] init].userId;
-        NSLog(@"myUserId:",myUserId);
-//        if(attributes[@"userUuid"]){
-//            userUuid = [WXConvert NSString:attributes[@"userUuid"]];
+        //   显示用户头像和名称  getUserInfoWithUserId
+//        [[RCIM sharedRCIM] setUserInfoDataSource:self];
+        [RCIM sharedRCIM].userInfoDataSource = self;
+        otherInfo = [[RCUserInfo alloc]init];
+        mySelf = [[RCUserInfo alloc]init];
+//        if(attributes[@"targetId"]){
+////            NSLog(@"=====1%@",attributes[@"targetId"]);
+//            myUserId = [WXConvert NSString:attributes[@"targetId"]];
+//            if(myUserId == NULL){
+//                return self;
+//            }
 //        }
     }
     return self;
 }
 - (void)updateAttributes:(NSDictionary *)attributes{
-//    if (attributes[@"userUuid"]) {
-//        userUuid = attributes[@"userUuid"];
+//    if (attributes[@"targetId"]) {
+//        myUserId = attributes[@"targetId"];
+//        NSLog(@"=====2%@",myUserId);
 //    }
 }
 
@@ -74,9 +84,7 @@ WX_EXPORT_METHOD(@selector(enterRoom:targetId:title:)) // 暴露该方法给js
         /*!系统*/
         conType = ConversationType_SYSTEM;
     }
-    otherUuid = targetId;
-//   显示用户头像和名称  getUserInfoWithUserId
-    [[RCIM sharedRCIM] setUserInfoDataSource:self];
+
     dispatch_async(dispatch_get_main_queue(), ^{
         chatViewController *chat = [[chatViewController alloc] initWithConversationType:conType targetId:targetId];
         chat.conversationType = conType;
@@ -141,22 +149,41 @@ WX_EXPORT_METHOD(@selector(selectList:))
         }
     }
 }
+WX_EXPORT_METHOD(@selector(refreshLoginInfo:name:portraitUri:))
+- (void)refreshLoginInfo:(NSString *)targetId name:(NSString *)name portraitUri:(NSString *)portraitUri{
+    mySelf.userId = targetId;
+    mySelf.name = name;
+    mySelf.portraitUri = portraitUri;
+    [[RCIM sharedRCIM] refreshUserInfoCache:mySelf withUserId:targetId];
+}
+WX_EXPORT_METHOD(@selector(refreshUserInfo:name:portraitUri:))
+- (void)refreshUserInfo:(NSString *)targetId name:(NSString *)name portraitUri:(NSString *)portraitUri{
+    otherInfo.userId = targetId;
+    otherInfo.name = name;
+    otherInfo.portraitUri = portraitUri;
+}
 
 /**
  *此方法中要提供给融云用户的信息，建议缓存到本地，然后改方法每次从您的缓存返回
  */
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void(^)(RCUserInfo* userInfo))completion
 {
-        NSLog(@"--------%@:otherUuid:%@:userUuid%@",userId,otherUuid,myUserId);
-    RCUserInfo *user = [[RCUserInfo alloc]init];
-    user.userId = userId;
-    if ([myUserId isEqual:userId]) {
-        user.name = @"sssd";
-    }else if([otherUuid isEqual:userId]) {
-        user.name = @"sss";
-//        user.portraitUri = [[data firstObject] objectAtIndex:1];
+    if([otherInfo.userId isEqual:userId]){
+        return completion(otherInfo);
+    }else if([mySelf.userId isEqual:userId]){
+        return completion(mySelf);
     }
-    return completion(user);
+}
+
+- (NSDictionary *)convertjsonStringToDict:(NSString *)jsonString{
+    NSDictionary *retDict = nil;
+    if ([jsonString isKindOfClass:[NSString class]]) {
+        NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+        retDict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:NULL];
+        return  retDict;
+    }else{
+        return retDict;
+    }
 }
 
 @end

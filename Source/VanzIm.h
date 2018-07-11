@@ -15,5 +15,5 @@
 #import <Foundation/Foundation.h>
 #import "WXModuleProtocol.h"
 @interface VanzIm : NSObject<WXModuleProtocol>
-@property (nonatomic, strong) NSString *userId;
+//@property (nonatomic, strong) NSString *userId;
 @end

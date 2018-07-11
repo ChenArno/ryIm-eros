@@ -23,7 +23,6 @@ WX_EXPORT_METHOD(@selector(init:success:error:))
     [self logout];
     [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
         NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-        _userId = userId;
         success(userId);
     } error:^(RCConnectErrorCode status) {
         if(error){
@@ -39,11 +38,6 @@ WX_EXPORT_METHOD(@selector(init:success:error:))
 WX_EXPORT_METHOD(@selector(logout))
 - (void)logout{
     [[RCIM sharedRCIM]logout];
-}
-//进入会话页面
-WX_EXPORT_METHOD(@selector(enterRoom:title:))
-- (void)enterRoom:(NSString *)targetId title:(NSString *)title{
-    
 }
 
 @end

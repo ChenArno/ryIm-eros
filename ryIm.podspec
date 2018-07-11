@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "ryIm"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "My ryIm."
   s.description  = <<-DESC
                         here is description.

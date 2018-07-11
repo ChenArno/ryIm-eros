@@ -105,6 +105,14 @@ this.$refs.imview.deleteItem(type,userId,res=>{
     })
 ```
 
+### 20180711-新增头像用户更新功能
+```Js
+ //当前当前登录用户信息刷新
+this.$refs.imview.refreshLoginInfo(userId, name, portraitUri)
+//聊天用户信息刷新
+this.$refs.imview.refreshUserInfo(userId,name,imgUrl)
+```
+
 具体例子详见
 
 - [https://github.com/ChenArno/ryim-eros-source.git] (https://github.com/ChenArno/ryim-eros-source.git)
